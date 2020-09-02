@@ -1,12 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Municipios.aspx.cs" Inherits="WebRegiones.Municipios" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Municipios.aspx.cs" Inherits="WebRegiones.Municipios" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 <body>
+    
    <div class="jumbotron">
         <h1>Municipios</h1>
         <p class="lead">&nbsp;</p>
@@ -90,5 +88,6 @@
                 &nbsp;</p>
         </div>
     </div>
+       
 </body>
-</html>
+</asp:Content>

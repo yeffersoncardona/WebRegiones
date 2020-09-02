@@ -23,16 +23,7 @@ namespace WebRegiones
 
         private void Consultar()
         {
-            //using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["connDB"].ConnectionString) )
-            //{
-            //    SqlCommand cmd = new SqlCommand();
-            //    cmd.CommandType = CommandType.StoredProcedure;
-            //    cmd.CommandText = "SPU_ConsultaRegiones";
-            //    cmd.Connection = conn;
-            //    cmd.Connection.Open();
-            //    gvdRegiones.DataSource = cmd.ExecuteReader();
-            //    gvdRegiones.DataBind();
-            //}
+            
             Regiones objRegiones = new Regiones();
             objRegiones.grdRegiones = gvdRegiones;
             objRegiones.Consultar();
