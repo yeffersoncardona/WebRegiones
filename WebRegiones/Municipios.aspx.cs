@@ -13,7 +13,9 @@ namespace WebRegiones
     public partial class Municipios : System.Web.UI.Page
     {
         public string strConexion { get; set; }
-        
+        public int intIdRegion { get; set; }
+        public string strMunicipio { get; set; }
+        public string strMensaje { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,8 +51,18 @@ namespace WebRegiones
         }
         protected void Registrar_Click(object sender, EventArgs e)
         {
-           // IngresarRegion();
+            IngresarMunicipio();
         }
+        private void IngresarMunicipio() {
+            intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
+            strMunicipio = txtName.Value;
 
+            Clases.Municipios objMunicipios = new Clases.Municipios();
+            objMunicipios.blEstado = cbxEstado.Checked;
+            objMunicipios.intIdRegion = intIdRegion;
+            objMunicipios.strNombre = strMunicipio;
+            strMensaje = objMunicipios.IngresarMunicipio();
+            lblMensaje.Text = strMensaje;
+        }
     }
 }

@@ -89,7 +89,7 @@ namespace WebRegiones.Clases
 
                 throw ex;
             }
-            //finally { cmd.Connection.Close(); }
+            
             
         }
     }
