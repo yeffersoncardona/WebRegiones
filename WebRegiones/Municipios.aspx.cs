@@ -69,6 +69,21 @@ namespace WebRegiones
             lblMensaje.Text = objMunicipios.EliminarMunicipio();
 
         }
+        public void Actualizar() 
+        {
+            intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
+            Clases.Municipios objMunicipios = new Clases.Municipios();
+            if (string.IsNullOrEmpty(txtcodigo.Value))
+            {
+                lblMensaje.Text = "Debes ingresar el codigo del municipio a eliminar";
+                return;
+            }
+            objMunicipios.intIdMunicipio = Convert.ToInt32(txtcodigo.Value);
+            objMunicipios.intIdRegion = intIdRegion;
+            objMunicipios.strNombre = txtName.Value;
+            objMunicipios.blEstado = cbxEstado.Checked;
+            lblMensaje.Text = objMunicipios.ActualizarMunicipio();
+        }
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
             Consultar();
@@ -76,6 +91,7 @@ namespace WebRegiones
         protected void Registrar_Click(object sender, EventArgs e)
         {
             IngresarMunicipio();
+            Consultar();
         }
         protected void Eliminar_Click(object sender, EventArgs e)
         {
@@ -84,6 +100,11 @@ namespace WebRegiones
 
         }
 
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            Actualizar();
+            Consultar();
+        }
 
 
     }

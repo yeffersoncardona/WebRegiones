@@ -69,6 +69,15 @@ namespace WebRegiones
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtcodigo;
 
         /// <summary>
+        /// btnActualizar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActualizar;
+
+        /// <summary>
         /// btnEliminar control.
         /// </summary>
         /// <remarks>

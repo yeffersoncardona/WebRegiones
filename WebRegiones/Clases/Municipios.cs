@@ -164,5 +164,40 @@ namespace WebRegiones.Clases
                 throw ex;
             }
         }
+
+        public string ActualizarMunicipio()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "SPU_ActualizarMunicipio";
+                cmd.Parameters.Add(new SqlParameter("@idMunicipio", intIdMunicipio));
+                cmd.Parameters.Add(new SqlParameter("@Name", strNombre));
+                cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion));
+                cmd.Parameters.Add(new SqlParameter("@Estado", blEstado));
+
+                SqlParameter = new SqlParameter();
+                SqlParameter.ParameterName = "@MENSAJE";
+                SqlParameter.SqlDbType = SqlDbType.VarChar;
+                SqlParameter.Size = 100;
+                SqlParameter.Direction = ParameterDirection.Output;
+
+                cmd.Parameters.Add(SqlParameter);
+                conn = new SqlConnection(strConexion);
+                cmd.Connection = conn;
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                strMensaje = SqlParameter.Value.ToString();
+
+                return strMensaje;
+
+            }
+            catch (Exception ex )
+            {
+
+                throw ex;
+            }
+        }
     }
 }
