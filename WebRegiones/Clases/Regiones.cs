@@ -63,7 +63,7 @@ namespace WebRegiones.Clases
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "SPU_ConsultaMunicipios";
+            cmd.CommandText = "SPU_ConsultarComboMunicipios";
             conn = new SqlConnection(strConexion);
             //SqlDataAdapter da = new SqlDataAdapter(cmd);
 

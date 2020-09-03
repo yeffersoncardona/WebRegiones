@@ -52,28 +52,7 @@ namespace WebRegiones.Clases
 
             }
 
-        public void LlenarComboRegiones()
-        {
-            DataTable dt = new DataTable();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "SPU_ConsultaRegiones";
-            conn = new SqlConnection(strConexion);
-            //SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            cmd.Connection = conn;
-            //se carga en la variable da
-          
-            cmd.Connection.Open();
-            
-            ddlRegiones.DataSource = cmd.ExecuteReader();
-            ddlRegiones.DataTextField = "Región";
-            ddlRegiones.DataValueField = "ID";
-            ddlRegiones.DataBind();
-            cmd.Connection.Close();
-
-        }
+       
         private bool validar() 
         {
             if (strNombre == string.Empty)

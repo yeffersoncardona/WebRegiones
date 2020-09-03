@@ -30,18 +30,11 @@ namespace WebRegiones
             Clases.Municipios objMunicipios = new Clases.Municipios();
             objMunicipios.gvdMunicipios = gvdMunicipios;
             objMunicipios.Consultar();
-            // gvdRegiones.RowStyle.BackColor = System.Drawing.Color.;// "blue";
+           
 
         }
 
-        public bool LlenarCombo()
-        {
-            Clases.Municipios objMunicipios = new Clases.Municipios();
-           // objMunicipios.ddlRegiones = ddlRegiones;
-            objMunicipios.LlenarComboRegiones();
-            
-            return true;
-        }
+      
         private void IngresarMunicipio()
         {
             //intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
