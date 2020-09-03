@@ -13,6 +13,7 @@ namespace WebRegiones.Clases
         public string strNombre = string.Empty;
         public string strMensaje = string.Empty;
         public int intIdRegion { get; set; }
+        public int intIdMunicipio { get; set; }
 
         public string strConexion = string.Empty;
         public bool blEstado { get; set; }
@@ -37,7 +38,7 @@ namespace WebRegiones.Clases
 
 
 
-                SqlCommand cmd = new SqlCommand();
+                cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "SPU_ConsultaMunicipios";
                 conn = new SqlConnection(strConexion);
@@ -127,6 +128,41 @@ namespace WebRegiones.Clases
                 throw ex;
             }
 
+        }
+
+        public string EliminarMunicipio()
+        {
+            try
+            {
+                
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "SPU_EliminarMunicipio";
+                cmd.Parameters.Add(new SqlParameter("@idMunicipio", intIdMunicipio));
+              
+
+                SqlParameter = new SqlParameter();
+                SqlParameter.ParameterName = "@MENSAJE";
+                SqlParameter.SqlDbType = SqlDbType.VarChar;
+                SqlParameter.Size = 100;
+                SqlParameter.Direction = ParameterDirection.Output;
+
+                cmd.Parameters.Add(SqlParameter);
+                conn = new SqlConnection(strConexion);
+                cmd.Connection = conn;
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                strMensaje = SqlParameter.Value.ToString();
+
+
+                return strMensaje;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

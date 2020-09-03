@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Municipios.aspx.cs" Inherits="WebRegiones.Municipios" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Municipios.aspx.cs" MaintainScrollPositionOnPostback="true" Inherits="WebRegiones.Municipios" %>
 
 
 
@@ -60,8 +60,8 @@
             <asp:TableCell>
                <input type="text" name="name" ID="txtcodigo" runat="server" value="" /> 
                  </asp:TableCell>
-                    <asp:TableCell>
-                 <a class="btn btn-danger">Eliminar &raquo;</a>
+             <asp:TableCell>
+                <p><asp:Button ID="btnEliminar" class="btn btn-danger" runat="server" OnClick="Eliminar_Click" Text="Eliminar"/></p>
             </asp:TableCell>
             
                 </asp:TableRow>

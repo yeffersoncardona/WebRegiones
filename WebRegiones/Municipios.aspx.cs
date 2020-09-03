@@ -45,15 +45,8 @@ namespace WebRegiones
             
             return true;
         }
-        protected void btnConsultar_Click(object sender, EventArgs e)
+        private void IngresarMunicipio()
         {
-            Consultar();
-        }
-        protected void Registrar_Click(object sender, EventArgs e)
-        {
-            IngresarMunicipio();
-        }
-        private void IngresarMunicipio() {
             intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
             strMunicipio = txtName.Value;
 
@@ -64,5 +57,34 @@ namespace WebRegiones
             strMensaje = objMunicipios.IngresarMunicipio();
             lblMensaje.Text = strMensaje;
         }
+        private void Eliminar()
+        {
+            Clases.Municipios objMunicipios = new Clases.Municipios();
+            if (string.IsNullOrEmpty( txtcodigo.Value) )
+            {
+                lblMensaje.Text = "Debes ingresar el codigo del municipio a eliminar";
+                return;
+            }
+            objMunicipios.intIdMunicipio = Convert.ToInt32(txtcodigo.Value);
+            lblMensaje.Text = objMunicipios.EliminarMunicipio();
+
+        }
+        protected void btnConsultar_Click(object sender, EventArgs e)
+        {
+            Consultar();
+        }
+        protected void Registrar_Click(object sender, EventArgs e)
+        {
+            IngresarMunicipio();
+        }
+        protected void Eliminar_Click(object sender, EventArgs e)
+        {
+            Eliminar();
+            Consultar();
+
+        }
+
+
+
     }
 }
