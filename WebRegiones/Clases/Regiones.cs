@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Web;
 using System.Web.UI.WebControls;
 
 namespace WebRegiones.Clases
@@ -21,7 +17,7 @@ namespace WebRegiones.Clases
         SqlCommand cmd = null;
         SqlConnection conn = null;
         SqlParameter SqlParameter = null;
-        SqlDataAdapter sqlDataAdapter = null;
+
 
         public GridView grdRegiones { get; set; }
         public DropDownList ddlMunicipios { get; set; }
@@ -40,20 +36,20 @@ namespace WebRegiones.Clases
         }
         public void Consultar()
         {
-           
-        
-           
-            
-                cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "SPU_ConsultaRegiones";
-                conn = new SqlConnection( strConexion);
-                cmd.Connection = conn;
-                cmd.Connection.Open();
-                grdRegiones.DataSource = cmd.ExecuteReader();
-                grdRegiones.DataBind();
-                cmd.Connection.Close();
-           
+
+
+
+
+            cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SPU_ConsultaRegiones";
+            conn = new SqlConnection(strConexion);
+            cmd.Connection = conn;
+            cmd.Connection.Open();
+            grdRegiones.DataSource = cmd.ExecuteReader();
+            grdRegiones.DataBind();
+            cmd.Connection.Close();
+
 
 
         }
@@ -65,10 +61,10 @@ namespace WebRegiones.Clases
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "SPU_ConsultarComboMunicipios";
             conn = new SqlConnection(strConexion);
-            //SqlDataAdapter da = new SqlDataAdapter(cmd);
+
 
             cmd.Connection = conn;
-            //se carga en la variable da
+
 
             cmd.Connection.Open();
 
@@ -116,8 +112,8 @@ namespace WebRegiones.Clases
 
                 throw ex;
             }
-            
-            
+
+
         }
         public string ActualizarRegion()
         {
@@ -157,7 +153,7 @@ namespace WebRegiones.Clases
             }
 
         }
-        public string EliminarRegion() 
+        public string EliminarRegion()
         {
             try
             {
@@ -165,7 +161,7 @@ namespace WebRegiones.Clases
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "SPU_EliminarRegion";
                 cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion));
-                
+
                 SqlParameter = new SqlParameter();
                 SqlParameter.ParameterName = "@MENSAJE";
                 SqlParameter.SqlDbType = SqlDbType.VarChar;

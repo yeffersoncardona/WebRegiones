@@ -22,7 +22,7 @@ namespace WebRegiones.Clases
         SqlCommand cmd = null;
         SqlConnection conn = null;
         SqlParameter SqlParameter = null;
-        SqlDataAdapter sqlDataAdapter = null;
+       
         public GridView gvdMunicipios { get; set; }
         public DropDownList ddlRegiones { get; set; }
         public Municipios()

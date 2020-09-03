@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Data;
-using System.Configuration;
 using WebRegiones.Clases;
-using System.EnterpriseServices;
 
 namespace WebRegiones
 {
@@ -22,25 +14,25 @@ namespace WebRegiones
             }
         }
 
-       
+
 
         private void Consultar()
         {
-            
+
             Regiones objRegiones = new Regiones();
             objRegiones.grdRegiones = gvdRegiones;
             objRegiones.Consultar();
-           // gvdRegiones.RowStyle.BackColor = System.Drawing.Color.;// "blue";
-           
+            // gvdRegiones.RowStyle.BackColor = System.Drawing.Color.;// "blue";
+
         }
         private void IngresarRegion()
         {
             if (string.IsNullOrEmpty(txtName.Value))
             {
                 lblMensaje.Text = "Debe Agregar un nombre para la region";
-                return ;
+                return;
             }
-            
+
             Regiones objRegiones = new Regiones();
             objRegiones.strNombre = txtName.Value;
             if (ddlMunicipio.SelectedIndex == 0)
@@ -49,8 +41,9 @@ namespace WebRegiones
 
             }
             else
-            { objRegiones.intIdMunicipio = Convert.ToInt32( ddlMunicipio.SelectedValue);
-              }
+            {
+                objRegiones.intIdMunicipio = Convert.ToInt32(ddlMunicipio.SelectedValue);
+            }
             lblMensaje.Text = objRegiones.InsertarRegion();
 
             Consultar();
@@ -76,12 +69,12 @@ namespace WebRegiones
             objRegiones.ddlMunicipios = ddlMunicipio;
             objRegiones.LlenarComboMunicipios();
             ddlMunicipio.Items.Insert(index, "Seleccione..");
-            
-            
+
+
 
             return true;
         }
-        private void Actualizar() 
+        private void Actualizar()
         {
             if (!ValidarCampos())
             {
@@ -89,9 +82,9 @@ namespace WebRegiones
             }
             Regiones objRegiones = new Regiones();
             objRegiones.strNombre = txtName.Value.Trim();
-           
+
             objRegiones.intIdRegion = Convert.ToInt32(txtcodigo.Value);
-            if (ddlMunicipio.SelectedIndex == 0 || ddlMunicipio.SelectedValue== "Seleccione..")
+            if (ddlMunicipio.SelectedIndex == 0 || ddlMunicipio.SelectedValue == "Seleccione..")
             {
                 objRegiones.intIdMunicipio = 0;
 
@@ -100,16 +93,16 @@ namespace WebRegiones
             {
                 objRegiones.intIdMunicipio = Convert.ToInt32(ddlMunicipio.SelectedValue);
             }
-           
+
             lblMensaje.Text = objRegiones.ActualizarRegion();
             Consultar();
         }
-        private void Eliminar() 
+        private void Eliminar()
         {
             if (string.IsNullOrEmpty(txtcodigo.Value))
             {
                 lblMensaje.Text = "Debe ingresar un codigo de region para actualizar";
-                return ;
+                return;
             }
 
             Regiones objRegiones = new Regiones();

@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using WebRegiones.Clases;
 
 namespace WebRegiones
 {
@@ -23,26 +15,26 @@ namespace WebRegiones
 
         }
 
-       
+
         private void Consultar()
         {
 
             Clases.Municipios objMunicipios = new Clases.Municipios();
             objMunicipios.gvdMunicipios = gvdMunicipios;
             objMunicipios.Consultar();
-           
+
 
         }
 
-      
+
         private void IngresarMunicipio()
         {
-            //intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
+
             strMunicipio = txtName.Value.Trim();
 
             Clases.Municipios objMunicipios = new Clases.Municipios();
             objMunicipios.blEstado = cbxEstado.Checked;
-            //objMunicipios.intIdRegion = intIdRegion;
+
             objMunicipios.strNombre = strMunicipio;
             strMensaje = objMunicipios.IngresarMunicipio();
             lblMensaje.Text = strMensaje;
@@ -50,7 +42,7 @@ namespace WebRegiones
         private void Eliminar()
         {
             Clases.Municipios objMunicipios = new Clases.Municipios();
-            if (string.IsNullOrEmpty( txtcodigo.Value) )
+            if (string.IsNullOrEmpty(txtcodigo.Value))
             {
                 lblMensaje.Text = "Debes ingresar el codigo del municipio a eliminar";
                 return;
@@ -59,9 +51,9 @@ namespace WebRegiones
             lblMensaje.Text = objMunicipios.EliminarMunicipio();
 
         }
-        public void Actualizar() 
+        public void Actualizar()
         {
-            //intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
+
             Clases.Municipios objMunicipios = new Clases.Municipios();
             if (string.IsNullOrEmpty(txtName.Value))
             {
