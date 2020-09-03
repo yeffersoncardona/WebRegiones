@@ -27,6 +27,7 @@
             </asp:TableCell>
             <asp:TableCell>
                <input type="text" name="name" ID="txtcodigo" runat="server" value="" /> 
+                <asp:RegularExpressionValidator ID="revtxtcodigo" ControlToValidate="txtcodigo" runat="server" ValidationExpression="\d+" ErrorMessage="Solo numeros"></asp:RegularExpressionValidator>
             </asp:TableCell>
             
                 </asp:TableRow>

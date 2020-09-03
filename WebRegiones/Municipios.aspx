@@ -59,6 +59,8 @@
             </asp:TableCell>
             <asp:TableCell>
                <input type="text" name="name" ID="txtcodigo" runat="server" value="" /> 
+               <asp:RegularExpressionValidator ID="revtxtcodigo" ControlToValidate="txtcodigo" runat="server" ValidationExpression="\d+" ErrorMessage="Solo numeros"></asp:RegularExpressionValidator>
+
                  </asp:TableCell>
              <asp:TableCell>
                 <p> <asp:Button ID="btnActualizar" class="btn btn-success" runat="server" OnClick="Registrar_Click" Text="Actualizar"/> &nbsp;&nbsp;&nbsp;
