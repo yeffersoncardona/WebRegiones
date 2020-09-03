@@ -174,7 +174,16 @@ namespace WebRegiones.Clases
                 cmd.CommandText = "SPU_ActualizarMunicipio";
                 cmd.Parameters.Add(new SqlParameter("@idMunicipio", intIdMunicipio));
                 cmd.Parameters.Add(new SqlParameter("@Name", strNombre));
-                cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion));
+
+                if (blEstado == true )
+                {
+                    cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion));
+                }
+                else {
+                    intIdRegion = 0;
+                    cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion)); 
+                }
+                
                 cmd.Parameters.Add(new SqlParameter("@Estado", blEstado));
 
                 SqlParameter = new SqlParameter();
