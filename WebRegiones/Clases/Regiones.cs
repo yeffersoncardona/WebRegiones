@@ -129,5 +129,36 @@ namespace WebRegiones.Clases
             }
 
         }
+        public string EliminarRegion() 
+        {
+            try
+            {
+                cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "SPU_EliminarRegion";
+                cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion));
+                
+                SqlParameter = new SqlParameter();
+                SqlParameter.ParameterName = "@MENSAJE";
+                SqlParameter.SqlDbType = SqlDbType.VarChar;
+                SqlParameter.Size = 100;
+                SqlParameter.Direction = ParameterDirection.Output;
+
+                cmd.Parameters.Add(SqlParameter);
+                conn = new SqlConnection(strConexion);
+                cmd.Connection = conn;
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                strMensaje = SqlParameter.Value.ToString();
+
+                return strMensaje;
+
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
     }
 }

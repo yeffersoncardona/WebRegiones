@@ -65,6 +65,19 @@ namespace WebRegiones
             lblMensaje.Text = objRegiones.ActualizarRegion();
             Consultar();
         }
+        private void Eliminar() 
+        {
+            if (string.IsNullOrEmpty(txtcodigo.Value))
+            {
+                lblMensaje.Text = "Debe ingresar un codigo de region para actualizar";
+                return ;
+            }
+
+            Regiones objRegiones = new Regiones();
+            objRegiones.intIdRegion = Convert.ToInt32(txtcodigo.Value);
+            lblMensaje.Text = objRegiones.EliminarRegion();
+            Consultar();
+        }
 
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
@@ -77,6 +90,10 @@ namespace WebRegiones
         protected void Actualizar_Click(object sender, EventArgs e)
         {
             Actualizar();
+        }
+        protected void Eliminar_Click(object sender, EventArgs e)
+        {
+            Eliminar();
         }
     }
 }

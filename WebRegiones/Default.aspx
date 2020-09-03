@@ -32,11 +32,11 @@
                 </asp:TableRow>
                 <asp:TableRow runat="server">
                     <asp:TableCell>
-                 <a class="btn btn-danger">Eliminar &raquo;</a>
+                 <asp:Button class="btn btn-danger" OnClick="Eliminar_Click" runat="server" Text="Eliminar"></asp:Button>
             </asp:TableCell>
             <asp:TableCell>
-                <p><asp:Button ID="btnAgregar" class="btn btn-success"  runat="server"  OnClick="Registrar_Click" Text="Agregar" /></p>
-                <p><asp:Button ID="btnActualizar" class="btn btn-success"  runat="server"  OnClick="Actualizar_Click" Text="Actualizar" /></p>
+                <p><asp:Button ID="btnAgregar" class="btn btn-success"  runat="server"  OnClick="Registrar_Click" Text="Agregar" /> &nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btnActualizar" class="btn btn-success"  runat="server"  OnClick="Actualizar_Click" Text="Actualizar" /></p>
             </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
