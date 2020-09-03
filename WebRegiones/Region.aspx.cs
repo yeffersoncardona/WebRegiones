@@ -88,7 +88,7 @@ namespace WebRegiones
                 return;
             }
             Regiones objRegiones = new Regiones();
-            objRegiones.strNombre = txtName.Value;
+            objRegiones.strNombre = txtName.Value.Trim();
            
             objRegiones.intIdRegion = Convert.ToInt32(txtcodigo.Value);
             if (ddlMunicipio.SelectedIndex == 0 || ddlMunicipio.SelectedValue== "Seleccione..")

@@ -38,7 +38,7 @@ namespace WebRegiones
         private void IngresarMunicipio()
         {
             //intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
-            strMunicipio = txtName.Value;
+            strMunicipio = txtName.Value.Trim();
 
             Clases.Municipios objMunicipios = new Clases.Municipios();
             objMunicipios.blEstado = cbxEstado.Checked;

@@ -87,6 +87,7 @@
                         <br />
                         <asp:GridView ID="gvdMunicipios" CssClass="table table-condensed table-hover" runat="server" HorizontalAlign="Center" Font-Bold="True" Font-Size="Medium" Width="500px">
                         </asp:GridView>
+                        <br />
                     </div>
                     <div class="col-sm">
                     </div>

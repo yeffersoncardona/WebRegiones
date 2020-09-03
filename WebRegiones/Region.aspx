@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="Default.aspx.cs" Inherits="WebRegiones._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="Region.aspx.cs" Inherits="WebRegiones._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -64,11 +64,13 @@
                     <div class="col-sm-2">
                         <br />
                         <asp:Button ID="btnConsultar" class="btn btn-primary" runat="server" OnClick="btnConsultar_Click" Text="Consultar" Width="137px" />
+                        <br />
                     </div>
                     <div class="col-sm-10">
                         <br />
                         <asp:GridView ID="gvdRegiones" CssClass="table table-condensed table-hover" runat="server" HorizontalAlign="Center" Font-Bold="True" Font-Size="Medium" Width="500px">
                         </asp:GridView>
+                        <br />
                     </div>
                     <div class="col-sm">
                     </div>
