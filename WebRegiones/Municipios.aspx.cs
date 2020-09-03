@@ -19,10 +19,7 @@ namespace WebRegiones
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
-                LlenarCombo();
-            }
+
 
         }
 
@@ -40,19 +37,19 @@ namespace WebRegiones
         public bool LlenarCombo()
         {
             Clases.Municipios objMunicipios = new Clases.Municipios();
-            objMunicipios.ddlRegiones = ddlRegiones;
+           // objMunicipios.ddlRegiones = ddlRegiones;
             objMunicipios.LlenarComboRegiones();
             
             return true;
         }
         private void IngresarMunicipio()
         {
-            intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
+            //intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
             strMunicipio = txtName.Value;
 
             Clases.Municipios objMunicipios = new Clases.Municipios();
             objMunicipios.blEstado = cbxEstado.Checked;
-            objMunicipios.intIdRegion = intIdRegion;
+            //objMunicipios.intIdRegion = intIdRegion;
             objMunicipios.strNombre = strMunicipio;
             strMensaje = objMunicipios.IngresarMunicipio();
             lblMensaje.Text = strMensaje;
@@ -71,15 +68,19 @@ namespace WebRegiones
         }
         public void Actualizar() 
         {
-            intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
+            //intIdRegion = Convert.ToInt32(ddlRegiones.SelectedValue);
             Clases.Municipios objMunicipios = new Clases.Municipios();
+            if (string.IsNullOrEmpty(txtName.Value))
+            {
+                lblMensaje.Text = "Debes ingresar un nombre del municipio a actualizar";
+                return;
+            }
             if (string.IsNullOrEmpty(txtcodigo.Value))
             {
-                lblMensaje.Text = "Debes ingresar el codigo del municipio a eliminar";
+                lblMensaje.Text = "Debes ingresar el codigo del municipio a actualizar";
                 return;
             }
             objMunicipios.intIdMunicipio = Convert.ToInt32(txtcodigo.Value);
-            objMunicipios.intIdRegion = intIdRegion;
             objMunicipios.strNombre = txtName.Value;
             objMunicipios.blEstado = cbxEstado.Checked;
             lblMensaje.Text = objMunicipios.ActualizarMunicipio();

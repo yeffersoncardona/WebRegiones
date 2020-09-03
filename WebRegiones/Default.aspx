@@ -26,6 +26,17 @@
                         <asp:Label Font-Size="16" Font-Bold="true" ID="lblMensaje" runat="server"></asp:Label>
                     </div>
                 </div>
+                <div class="row form-group">
+                    <div class="col-sm-4">
+                        <label  style="font-size:20px;" for="">Municipio</label>
+                    </div>
+                    <div class="col-sm-4">
+                         <asp:DropDownList ID="ddlMunicipio" class="form-control" runat="server"></asp:DropDownList>
+                    </div>
+                    <div class="col-sm-4">
+                        <asp:Label Font-Size="16" Font-Bold="true" ID="Label2" runat="server"></asp:Label>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-4">
                         <label style="font-size:20px;" for="">Codigo</label>

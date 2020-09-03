@@ -82,10 +82,7 @@ namespace WebRegiones.Clases
                 return false;
             }
 
-            if (intIdRegion == 0)
-            {
-                return false;
-            }
+           
 
             
             return true;
@@ -96,14 +93,13 @@ namespace WebRegiones.Clases
             {
                 if (!validar())
                 {
-                    strMensaje = "Debe ingresar el municipio , seleccionar region ";
+                    strMensaje = "Debe ingresar un nombre para el municipio";
                     return strMensaje;
                 }
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "SPU_InsertarMunicipio";
                 cmd.Parameters.Add(new SqlParameter("@Name", strNombre));
-                cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion));
                 cmd.Parameters.Add(new SqlParameter("@Estado", blEstado));
 
                 SqlParameter = new SqlParameter();
@@ -173,17 +169,7 @@ namespace WebRegiones.Clases
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "SPU_ActualizarMunicipio";
                 cmd.Parameters.Add(new SqlParameter("@idMunicipio", intIdMunicipio));
-                cmd.Parameters.Add(new SqlParameter("@Name", strNombre));
-
-                if (blEstado == true )
-                {
-                    cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion));
-                }
-                else {
-                    intIdRegion = 0;
-                    cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion)); 
-                }
-                
+                cmd.Parameters.Add(new SqlParameter("@Name", strNombre));            
                 cmd.Parameters.Add(new SqlParameter("@Estado", blEstado));
 
                 SqlParameter = new SqlParameter();

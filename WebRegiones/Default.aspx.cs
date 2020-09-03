@@ -16,7 +16,10 @@ namespace WebRegiones
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!this.IsPostBack)
+            {
+                LlenarCombo();
+            }
         }
 
        
@@ -32,11 +35,25 @@ namespace WebRegiones
         }
         private void IngresarRegion()
         {
+            if (string.IsNullOrEmpty(txtName.Value))
+            {
+                lblMensaje.Text = "Debe Agregar un nombre para la region";
+                return ;
+            }
+            
             Regiones objRegiones = new Regiones();
             objRegiones.strNombre = txtName.Value;
+            if (ddlMunicipio.SelectedIndex == 0)
+            {
+                objRegiones.intIdMunicipio = ddlMunicipio.SelectedIndex;
+
+            }
+            else
+            { objRegiones.intIdMunicipio = Convert.ToInt32( ddlMunicipio.SelectedValue);
+              }
             lblMensaje.Text = objRegiones.InsertarRegion();
 
-
+            Consultar();
         }
         private bool ValidarCampos()
         {
@@ -52,6 +69,18 @@ namespace WebRegiones
             }
             return true;
         }
+        public bool LlenarCombo()
+        {
+            int index = 0;
+            Clases.Regiones objRegiones = new Clases.Regiones();
+            objRegiones.ddlMunicipios = ddlMunicipio;
+            objRegiones.LlenarComboMunicipios();
+            ddlMunicipio.Items.Insert(index, "Seleccione..");
+            
+            
+
+            return true;
+        }
         private void Actualizar() 
         {
             if (!ValidarCampos())
@@ -62,6 +91,16 @@ namespace WebRegiones
             objRegiones.strNombre = txtName.Value;
            
             objRegiones.intIdRegion = Convert.ToInt32(txtcodigo.Value);
+            if (ddlMunicipio.SelectedIndex == 0 || ddlMunicipio.SelectedValue== "Seleccione..")
+            {
+                objRegiones.intIdMunicipio = 0;
+
+            }
+            else
+            {
+                objRegiones.intIdMunicipio = Convert.ToInt32(ddlMunicipio.SelectedValue);
+            }
+           
             lblMensaje.Text = objRegiones.ActualizarRegion();
             Consultar();
         }

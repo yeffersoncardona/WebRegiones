@@ -14,6 +14,8 @@ namespace WebRegiones.Clases
         public string strNombre = string.Empty;
         public string strMensaje = string.Empty;
         public int intIdRegion { get; set; }
+
+        public int intIdMunicipio { get; set; }
         public string strConexion = string.Empty;
 
         SqlCommand cmd = null;
@@ -22,6 +24,7 @@ namespace WebRegiones.Clases
         SqlDataAdapter sqlDataAdapter = null;
 
         public GridView grdRegiones { get; set; }
+        public DropDownList ddlMunicipios { get; set; }
         public Regiones()
         {
             clsConexion objCon = new clsConexion();
@@ -54,6 +57,28 @@ namespace WebRegiones.Clases
 
 
         }
+        public void LlenarComboMunicipios()
+        {
+            DataTable dt = new DataTable();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SPU_ConsultaMunicipios";
+            conn = new SqlConnection(strConexion);
+            //SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            cmd.Connection = conn;
+            //se carga en la variable da
+
+            cmd.Connection.Open();
+
+            ddlMunicipios.DataSource = cmd.ExecuteReader();
+            ddlMunicipios.DataTextField = "Municipio";
+            ddlMunicipios.DataValueField = "Codigo";
+            ddlMunicipios.DataBind();
+            cmd.Connection.Close();
+
+        }
         public string InsertarRegion()
         {
             try
@@ -67,6 +92,8 @@ namespace WebRegiones.Clases
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "SPU_InsertarRegion";
                 cmd.Parameters.Add(new SqlParameter("@Name", strNombre));
+                cmd.Parameters.Add(new SqlParameter("@IdMunicipio", intIdMunicipio));
+
 
                 SqlParameter = new SqlParameter();
                 SqlParameter.ParameterName = "@MENSAJE";
@@ -106,6 +133,7 @@ namespace WebRegiones.Clases
                 cmd.CommandText = "SPU_ActualizarRegion";
                 cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion));
                 cmd.Parameters.Add(new SqlParameter("@Name", strNombre));
+                cmd.Parameters.Add(new SqlParameter("@IdMunicipio", intIdMunicipio));
                 SqlParameter = new SqlParameter();
                 SqlParameter.ParameterName = "@MENSAJE";
                 SqlParameter.SqlDbType = SqlDbType.VarChar;
