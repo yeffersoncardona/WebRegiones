@@ -68,8 +68,8 @@ namespace WebRegiones.Clases
             cmd.Connection.Open();
             
             ddlRegiones.DataSource = cmd.ExecuteReader();
-            ddlRegiones.DataTextField = "RegionName";
-            ddlRegiones.DataValueField = "IdRegion";
+            ddlRegiones.DataTextField = "Región";
+            ddlRegiones.DataValueField = "ID";
             ddlRegiones.DataBind();
             cmd.Connection.Close();
 
