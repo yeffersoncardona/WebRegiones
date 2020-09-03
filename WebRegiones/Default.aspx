@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebRegiones._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="Default.aspx.cs" Inherits="WebRegiones._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -36,7 +36,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <p><asp:Button ID="btnAgregar" class="btn btn-success"  runat="server"  OnClick="Registrar_Click" Text="Agregar" /></p>
-                
+                <p><asp:Button ID="btnActualizar" class="btn btn-success"  runat="server"  OnClick="Actualizar_Click" Text="Actualizar" /></p>
             </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>

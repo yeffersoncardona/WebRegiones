@@ -38,6 +38,33 @@ namespace WebRegiones
 
 
         }
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrEmpty(txtName.Value))
+            {
+                lblMensaje.Text = "Debe Agregar un nombre para la region";
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtcodigo.Value))
+            {
+                lblMensaje.Text = "Debe ingresar un codigo de region para actualizar";
+                return false;
+            }
+            return true;
+        }
+        private void Actualizar() 
+        {
+            if (!ValidarCampos())
+            {
+                return;
+            }
+            Regiones objRegiones = new Regiones();
+            objRegiones.strNombre = txtName.Value;
+           
+            objRegiones.intIdRegion = Convert.ToInt32(txtcodigo.Value);
+            lblMensaje.Text = objRegiones.ActualizarRegion();
+            Consultar();
+        }
 
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
@@ -46,6 +73,10 @@ namespace WebRegiones
         protected void Registrar_Click(object sender, EventArgs e)
         {
             IngresarRegion();
+        }
+        protected void Actualizar_Click(object sender, EventArgs e)
+        {
+            Actualizar();
         }
     }
 }

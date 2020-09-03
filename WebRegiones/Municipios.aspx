@@ -61,7 +61,7 @@
                <input type="text" name="name" ID="txtcodigo" runat="server" value="" /> 
                  </asp:TableCell>
              <asp:TableCell>
-                <p> <asp:Button ID="btnActualizar" class="btn btn-success" runat="server" OnClick="btnActualizar_Click" Text="Actualizar"/> &nbsp;&nbsp;&nbsp;
+                <p> <asp:Button ID="btnActualizar" class="btn btn-success" runat="server" OnClick="Registrar_Click" Text="Actualizar"/> &nbsp;&nbsp;&nbsp;
                 <asp:Button ID="btnEliminar" class="btn btn-danger" runat="server" OnClick="Eliminar_Click" Text="Eliminar"/></p>
             </asp:TableCell>
             

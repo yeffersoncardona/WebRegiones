@@ -13,7 +13,7 @@ namespace WebRegiones.Clases
     {
         public string strNombre = string.Empty;
         public string strMensaje = string.Empty;
-
+        public int intIdRegion { get; set; }
         public string strConexion = string.Empty;
 
         SqlCommand cmd = null;
@@ -41,7 +41,7 @@ namespace WebRegiones.Clases
         
            
             
-                SqlCommand cmd = new SqlCommand();
+                cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "SPU_ConsultaRegiones";
                 conn = new SqlConnection( strConexion);
@@ -91,6 +91,43 @@ namespace WebRegiones.Clases
             }
             
             
+        }
+        public string ActualizarRegion()
+        {
+            try
+            {
+                if (!validar())
+                {
+                    strMensaje = "Debe ingresar un valor para la region";
+                    return strMensaje;
+                }
+                cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "SPU_ActualizarRegion";
+                cmd.Parameters.Add(new SqlParameter("@idRegion", intIdRegion));
+                cmd.Parameters.Add(new SqlParameter("@Name", strNombre));
+                SqlParameter = new SqlParameter();
+                SqlParameter.ParameterName = "@MENSAJE";
+                SqlParameter.SqlDbType = SqlDbType.VarChar;
+                SqlParameter.Size = 100;
+                SqlParameter.Direction = ParameterDirection.Output;
+
+                cmd.Parameters.Add(SqlParameter);
+                conn = new SqlConnection(strConexion);
+                cmd.Connection = conn;
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                strMensaje = SqlParameter.Value.ToString();
+
+
+                return strMensaje;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
         }
     }
 }
